@@ -45,8 +45,11 @@ ENV TENSORFLOW_VERSION=${TENSORFLOW_VERSION}
 RUN python -m pip install tensorflow-gpu==$(echo $TENSORFLOW_VERSION)
 
 # install dirt
+# git clone --single-branch --branch <branchname> <remote-repo>
+# included debug couts in raterise_ops and gl_common etc in local repo specific branch anu-debug
+
 ENV CUDAFLAGS='-DNDEBUG=1'
-RUN cd ~ && git clone https://github.com/pmh47/dirt.git && \ 
+RUN cd ~ && git clone --single-branch --branch anu-debug https://github.com/au001/dirt.git && \ 
  	python -m pip install dirt/
 	 
 # If you are using Ubuntu 18.04 or newer, with the Ubuntu-packaged Nvidia drivers (i.e. installed with apt not Nvidia's runfile),
