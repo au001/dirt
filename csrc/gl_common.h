@@ -54,11 +54,13 @@ namespace gl_common
 
         // Find which egl device matches the active cuda device, or use device zero for cpu mode (requiredCudaDevice == -1)
         int eglDeviceIndex = 0;
-        std::cout << "before entering requiredCudaDevice: " << requiredCudaDevice; 
+        // std::cout << "before entering requiredCudaDevice: " << requiredCudaDevice; 
+        LOG(FATAL) << "before entering requiredCudaDevice: " << requiredCudaDevice; 
         if (requiredCudaDevice != -1) {
             for (; eglDeviceIndex < numDevices; ++eglDeviceIndex) {
                 EGLAttrib cudaDeviceId = -1;
-                std::cout << "eglQueryDeviceAttribEXT returns " << eglQueryDeviceAttribEXT(eglDevs[eglDeviceIndex], EGL_CUDA_DEVICE_NV, &cudaDeviceId);
+                // std::cout << "eglQueryDeviceAttribEXT returns " << eglQueryDeviceAttribEXT(eglDevs[eglDeviceIndex], EGL_CUDA_DEVICE_NV, &cudaDeviceId);
+                LOG(FATAL) << "eglQueryDeviceAttribEXT returns " << eglQueryDeviceAttribEXT(eglDevs[eglDeviceIndex], EGL_CUDA_DEVICE_NV, &cudaDeviceId);
                 if (cudaDeviceId == requiredCudaDevice)
                     break;
             }
