@@ -169,7 +169,8 @@ class RasteriseOpGpu : public OpKernel
         CUdevice active_cuda_device;
         if (auto const err = cuCtxGetDevice(&active_cuda_device))
             LOG(FATAL) << "cudaGetDevice failed: " << err;
-        gl_common::initialise_context(active_cuda_device);
+        LOG(INFO) << "$$$$$$$$ active cuda device from rasterise_egl.cpp: " << (int)active_cuda_device;
+	gl_common::initialise_context(active_cuda_device);
 
         objects.buffer_height = objects.buffer_width = 0;
         objects.framebuffer = objects.pixels_texture = objects.depth_buffer = 0;
