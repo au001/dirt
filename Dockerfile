@@ -73,4 +73,4 @@ RUN cd ~ && git clone --single-branch --branch anu-debug https://github.com/au00
 #	apt-get install -y nvidia-cuda-toolkit
 
 # run dirt test command
-RUN python ~/dirt/tests/square_test.py
+#RUN python ~/dirt/tests/square_test.py
