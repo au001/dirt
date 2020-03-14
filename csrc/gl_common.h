@@ -61,7 +61,8 @@ namespace gl_common
             for (; eglDeviceIndex < numDevices; ++eglDeviceIndex) {
                 EGLAttrib cudaDeviceId = -1;
                                
-                LOG(INFO) << "eglQueryDeviceAttribEXT returns " << eglQueryDeviceAttribEXT(eglDevs[eglDeviceIndex], EGL_CUDA_DEVICE_NV, &cudaDeviceId);
+                LOG(INFO) << "eglQueryDeviceStringEXT returns " << eglQueryDeviceStringEXT(eglDevs[eglDeviceIndex], EGL_EXTENSIONS);
+		LOG(INFO) << "eglQueryDeviceAttribEXT returns " << eglQueryDeviceAttribEXT(eglDevs[eglDeviceIndex], EGL_CUDA_DEVICE_NV, &cudaDeviceId);
 		LOG(INFO) << "eglGetError returns " << eglGetError();               
  
 		if (cudaDeviceId == requiredCudaDevice)
