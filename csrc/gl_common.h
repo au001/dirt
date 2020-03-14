@@ -42,8 +42,9 @@ namespace gl_common
         auto const eglQueryDevicesEXT = (PFNEGLQUERYDEVICESEXTPROC) eglGetProcAddress("eglQueryDevicesEXT");
         auto const eglQueryDeviceAttribEXT = (PFNEGLQUERYDEVICEATTRIBEXTPROC) eglGetProcAddress("eglQueryDeviceAttribEXT");
         auto const eglGetPlatformDisplayEXT = (PFNEGLGETPLATFORMDISPLAYEXTPROC) eglGetProcAddress("eglGetPlatformDisplayEXT");
-        if (!eglQueryDevicesEXT || !eglQueryDeviceAttribEXT || !eglGetPlatformDisplayEXT)
-            LOG(FATAL) << "extensions eglQueryDevicesEXT, eglQueryDeviceAttribEXT and eglGetPlatformDisplayEXT not available";
+	auto const eglQueryDeviceStringEXT = (PFNEGLQUERYDEVICESTRINGEXTPROC)eglGetProcAddress("eglQueryDeviceStringEXT");
+        if (!eglQueryDevicesEXT || !eglQueryDeviceAttribEXT || !eglGetPlatformDisplayEXT || !eglQueryDeviceStringEXT)
+            LOG(FATAL) << "extensions eglQueryDevicesEXT, eglQueryDeviceAttribEXT, eglGetPlatformDisplayEXT and eglQueryDeviceStringEXT not available";
 
         // Enumerate egl devices
         constexpr int MAX_DEVICES = 16;
